@@ -1,24 +1,67 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false, unique: true|
+|encrypted_password|string|null: false|
+|last_name|string|null: false|
+|first_name|string|null: false|
+|last_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|birth_data|date|null: false|
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :purchases
 
-* Configuration
+## items テーブル
 
-* Database creation
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|explanation|text|null: false|
+|category|string|null: false|
+|condition|string|null: false|
+|postage|string|null: false|
+|area|string|null: false|
+|days|string|null: false|
+|price|integer|null: false|
+|user|references|null: false, foreign_key: true|
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- has_one :purchas
 
-* Services (job queues, cache servers, search engines, etc.)
+## purchases テーブル
 
-* Deployment instructions
+|Column|Type|Options|
+|------|----|-------|
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 
-* ...
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :address
+
+## addresses テーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|postal_code|string|null: false|
+|state|string|null: false|
+|city|string|null: false|
+|address|string|null: false|
+|building_name|string|
+|phone|integer|null: false|
+|purchas|references|null: false, foreign_key: true|
+
+### Association
+
+- belongs_to :purchas
