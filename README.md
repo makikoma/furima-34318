@@ -24,18 +24,18 @@
 |------|----|-------|
 |name|string|null: false|
 |explanation|text|null: false|
-|category|string|null: false|
-|condition|string|null: false|
-|postage|string|null: false|
-|area|string|null: false|
-|days|string|null: false|
+|category_id|integer|null: false|
+|condition_id|integer|null: false|
+|postage_id|integer|null: false|
+|area_id|integer|null: false|
+|delivery_day_id|integer|null: false|
 |price|integer|null: false|
 |user|references|null: false, foreign_key: true|
 
 ### Association
 
 - belongs_to :user
-- has_one :purchas
+- has_one :purchase
 
 ## purchases テーブル
 
@@ -55,13 +55,13 @@
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|string|null: false|
-|state|string|null: false|
+|state|integer|null: false|
 |city|string|null: false|
 |address|string|null: false|
 |building_name|string|
-|phone|integer|null: false|
-|purchas|references|null: false, foreign_key: true|
+|phone|string|null: false|
+|purchase|references|null: false, foreign_key: true|
 
 ### Association
 
-- belongs_to :purchas
+- belongs_to :purchase
