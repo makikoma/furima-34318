@@ -98,22 +98,22 @@ RSpec.describe Item, type: :model do
       it 'priceは全角数字では出品できない' do
         @item.price = '１２３４５'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price Half-width number', 'Price Out of setting range')
+        expect(@item.errors.full_messages).to include('Price Half-width number')
       end
       it 'priceは全角文字では出品できない' do
         @item.price = 'あいうえお'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price Half-width number', 'Price Out of setting range')
+        expect(@item.errors.full_messages).to include('Price Half-width number')
       end
       it 'priceは半角英数混合では出品できない' do
         @item.price = 'abc123'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price Half-width number', 'Price Out of setting range')
+        expect(@item.errors.full_messages).to include('Price Half-width number')
       end
       it 'priceは半角英語だけでは出品できない' do
         @item.price = 'abcde'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price Half-width number', 'Price Out of setting range')
+        expect(@item.errors.full_messages).to include('Price Half-width number')
       end
     end
   end
