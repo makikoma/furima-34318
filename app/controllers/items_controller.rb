@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update]
+  before_action :move_to_index, only: [:edit, :update]
 
   def index
     @items = Item.all.order('id DESC')
@@ -19,15 +21,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to action: :show
     else
@@ -42,4 +41,16 @@ class ItemsController < ApplicationController
       :image, :name, :explanation, :category_id, :condition_id, :postage_id, :area_id, :delivery_day_id, :price
     ).merge(user_id: current_user.id)
   end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  # 商品購入機能実装後に実装する
+  # ログイン状態の出品者であっても、URLを直接入力して自身の売却済み商品の商品情報編集ページへ遷移しようとすると、トップページに遷移すること
+  def move_to_index
+    redirect_to root_path unless @item.user_id == current_user.id
+  end
+  # //ログイン状態の出品者であっても、URLを直接入力して自身の売却済み商品の商品情報編集ページへ遷移しようとすると、トップページに遷移すること
+  # //商品購入機能実装後に実装する
 end
