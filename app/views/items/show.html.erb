@@ -32,7 +32,7 @@
     <%# ログイン状態の出品者以外のユーザーでも、売却済みの商品に対しては「購入画面に進む」ボタンが表示されなようにする %>
     <% if user_signed_in? %>
       <% if current_user == @item.user %>
-      <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
+      <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
       <p class="or-text">or</p>
       <%= link_to "削除", "#", method: :delete, class:"item-destroy" %>
       <% elsif %>
