@@ -1,9 +1,11 @@
 class PurchaseAddress
   include ActiveModel::Model
   attr_accessor :user_id, :item_id,
-                :postal_code, :state_id, :city, :address, :building_name, :phone
+                :postal_code, :state_id, :city, :address, :building_name, :phone,
+                :token
 
   with_options presence: true do
+    validates :token
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'Input correctly' }
     validates :state_id, numericality: { other_than: 1, message: 'Select' }
     validates :city, :address

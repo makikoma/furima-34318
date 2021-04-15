@@ -10,7 +10,7 @@ RSpec.describe PurchaseAddress, type: :model do
 
   describe '商品購入' do
     context '購入できる時' do
-      it 'postal_code,state_id,city,address,phoneが入力されていれば購入できる' do
+      it 'token,postal_code,state_id,city,address,phoneが入力されていれば購入できる' do
         expect(@purchase_address).to be_valid
       end
       it 'postal_codeは半角数字3桁,半角ハイフン,半角数字4桁(123-4567の形)であれば購入できる' do
@@ -27,6 +27,11 @@ RSpec.describe PurchaseAddress, type: :model do
       end
     end
     context '購入できない時' do
+      it "tokenが空では購入できない" do
+        @purchase_address.token = ''
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
+      end
       it 'postal_codeが空では購入できない' do
         @purchase_address.postal_code = ''
         @purchase_address.valid?
