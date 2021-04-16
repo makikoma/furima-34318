@@ -51,11 +51,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  # 商品購入機能実装後に実装する
-  # ログイン状態の出品者であっても、URLを直接入力して自身の売却済み商品の商品情報編集ページへ遷移しようとすると、トップページに遷移すること
   def move_to_index
-    redirect_to root_path unless @item.user_id == current_user.id
+    redirect_to root_path unless @item.user_id == current_user.id && @item.purchase.nil?
   end
-  # //ログイン状態の出品者であっても、URLを直接入力して自身の売却済み商品の商品情報編集ページへ遷移しようとすると、トップページに遷移すること
-  # //商品購入機能実装後に実装する
 end
