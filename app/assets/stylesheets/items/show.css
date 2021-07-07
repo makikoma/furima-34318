@@ -29,8 +29,22 @@
   height: 50vh;
   width: 60vw;
   min-height: 500px;
-  background-color: rgb(205, 202, 202);
   object-fit: contain;
+}
+
+.close {
+  display: none;
+}
+
+.item-box-img-1, .edit-image {
+  padding: 10px;
+  height: 18vh;
+  width: 10vw;
+  object-fit: cover;
+}
+
+.edit-image {
+  margin-right: 25px;
 }
 
 .item-price-box {

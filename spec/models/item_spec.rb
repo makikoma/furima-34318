@@ -41,7 +41,7 @@ RSpec.describe Item, type: :model do
     end
     context '出品できない時' do
       it 'imageが未選択では出品できない' do
-        @item.image = nil
+        @item.images = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end

@@ -27,11 +27,21 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
+    # チェックを入れた画像を削除する
+    if params[:item][:image_ids]
+      params[:item][:image_ids].each do |image_id|
+        image = @item.images.find(image_id)
+        image.purge
+      end
+    end
+
+    if @item.update_attributes(item_params)
+      flash[:success] = "編集しました"
       redirect_to action: :show
     else
       render :edit
     end
+
   end
 
   def destroy
@@ -43,7 +53,7 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(
-      :image, :name, :explanation, :category_id, :condition_id, :postage_id, :area_id, :delivery_day_id, :price
+      :name, :explanation, :category_id, :condition_id, :postage_id, :area_id, :delivery_day_id, :price, images: []
     ).merge(user_id: current_user.id)
   end
 

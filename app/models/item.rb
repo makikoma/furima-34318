@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
   has_one :purchase
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   belongs_to :delivery_day
 
   with_options presence: true do
-    validates :image, :name, :explanation
+    validates :images, :name, :explanation
     validates :price, format: { with: /\A[0-9]\d+\z/, message: 'Half-width number' }
   end
 

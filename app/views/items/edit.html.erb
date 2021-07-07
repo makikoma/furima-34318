@@ -21,9 +21,18 @@ app/assets/stylesheets/items/new.css %>
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :image, id:"item-image" %>
+        <%= f.file_field :images, multiple: true, name: 'item[images][]', id:"item_image" %>
       </div>
     </div>
+    <div id="image-list"></div>
+    <% if @item.images.present? %>
+      <p>現在登録されている画像（削除するものはチェックしてください）</p>
+      <% @item.images.each do |image| %>
+        <%= f.check_box :image_ids, {multiple: true}, image.id, false %>
+        <%= image_tag image, class:"edit-image" %> <br>
+      <% end %>
+    <% end %>
+
     <%# /出品画像 %>
     <%# 商品名と商品説明 %>
     <div class="new-items">
