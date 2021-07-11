@@ -6,8 +6,11 @@
     <h2 class="name">
       <%= @item.name %>
     </h2>
-    <div class="item-img-content">
-      <%= image_tag @item.image ,class:"item-box-img" %>
+    <div class="item-img-content-0">
+
+      <% @item.images.each do |image| %>
+        <%= image_tag image, class:'item-box-img' %>
+      <% end %>
 
       <% if @item.purchase.present? %>
       <div class="sold-out">
@@ -16,6 +19,16 @@
       <% end %>
 
     </div>
+
+    <div class="item-img-content-1">
+
+      <% @item.images.each do |image| %>
+        <%= image_tag image, class:'item-box-img-1' %>
+      <% end %>
+
+    </div>
+
+
     <div class="item-price-box">
       <span class="item-price">
         <%= "¥ #{@item.price}" %>

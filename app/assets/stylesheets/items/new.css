@@ -1,6 +1,3 @@
-/* border-bottom: 1px solid #eee; */
-
-
 .items-sell-contents {
   background-color: #f5f5f5;
   font-family: "Source Sans Pro", Helvetica, Arial, "æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“", "YuGothic", "ãƒ¡ã‚¤ãƒªã‚ª", "Meiryo", sans-serif;
@@ -20,7 +17,7 @@
   background-color: #FFF;
   width: 70vw;
   min-width: 450px;
-  padding: 10vh 15vw;
+  padding: 10vh 10vw;
 }
 
 .items-sell-title {
@@ -80,16 +77,62 @@
   padding: 2vh 0;
 }
 
-.click-upload {
-  margin: 15px 0;
-  min-width: 250px;
-}
-
-.click-upload>p {
-  margin-bottom: 15px;
-}
-
 /* /出品画像 */
+
+.upload_items_container {
+  width: 100%;
+  height: 162px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.upload_items {
+  background-color: lightgray;
+  height: 100%;
+  display: flex;
+}
+
+.image-element {
+  width: 100%;
+  height: 100%;
+}
+
+.image-element img {
+  width: 100%;
+  height: 85%;
+}
+
+.image-element div {
+  height: 15%;
+  text-align: center;
+}
+
+.click-upload {
+  background-color: rgb(221, 203, 179);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.have_item_0, .ul_have_item_5 {
+  width: 100%;
+}
+.have_item_1, .ul_have_item_4 {
+  width: 80%;
+}
+.have_item_2, .ul_have_item_3 {
+  width: 60%;
+}
+.have_item_3, .ul_have_item_2 {
+  width: 40%;
+}
+.have_item_4, .ul_have_item_1 {
+  width: 20%;
+}
+.have_item_5, .ul_have_item_0 {
+  width: 0;
+}
 
 /* 商品名と商品説明 */
 .new-items {

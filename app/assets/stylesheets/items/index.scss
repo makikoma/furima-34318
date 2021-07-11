@@ -251,9 +251,17 @@ a {
 }
 
 
-.item-img-content {
+.item-img-content-0 {
   position: relative;
 }
+
+.item-img-content-1 {
+  display: flex;
+  justify-content: center;
+  width: 70vw;
+  margin-top: 10px;
+}
+
 
 .item-img {
   width: 33vh;
