@@ -36,7 +36,7 @@
   display: none;
 }
 
-.item-box-img-1, .edit-image {
+.item-box-img-1 {
   padding: 10px;
   height: 18vh;
   width: 10vw;
@@ -44,7 +44,14 @@
 }
 
 .edit-image {
-  margin-right: 25px;
+  padding: 10px;
+  height: 18vh;
+  width: 10vw;
+  object-fit: cover;
+}
+
+#image-list {
+  display: flex;
 }
 
 .item-price-box {

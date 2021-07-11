@@ -17,20 +17,27 @@ app/assets/stylesheets/items/new.css %>
         出品画像
         <span class="indispensable">必須</span>
       </div>
-      <div class="click-upload">
-        <p>
-          クリックしてファイルをアップロード
-        </p>
-        <%= f.file_field :images, multiple: true, name: 'item[images][]', id:"item_image_1" %>
+      <p>最大5枚までアップロードできます<br>画像を追加する場合は全て選択し直します</p>
+      <div class="upload_items_container">
+        <ul class="upload_items"></ul>
+        <div class="click-upload">
+          <p>クリックしてファイルをアップロード</P>
+        </div>      
       </div>
     </div>
-    <div id="image-list"></div>
+    <div id="input_image_file">
+      <%= f.file_field :images, multiple: true, name: 'item[images][]', id:"item_image_1", style: "display:none;" %>
+    </div>
     <% if @item.images.present? %>
       <p>現在登録されている画像（削除するものはチェックしてください）</p>
-      <% @item.images.each do |image| %>
-        <%= f.check_box :image_ids, {multiple: true}, image.id, false %>
-        <%= image_tag image, class:"edit-image" %> <br>
-      <% end %>
+      <div id="image-list">
+        <% @item.images.each do |image| %>
+          <div class="image-list1">
+          <%= image_tag image, class:"edit-image" %> <br>
+          <%= f.check_box :image_ids, {multiple: true}, image.id, false %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
 
     <%# /出品画像 %>
