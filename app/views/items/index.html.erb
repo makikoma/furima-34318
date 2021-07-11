@@ -129,11 +129,11 @@
       <% @items.each do |item|%>
       <li class='list'>
         <%= link_to item_path(item.id) do %>
-        <div class='item-img-content'>
+        <div class='item-img-content-0'>
 
-        <% if item.images.attached? %>
-          <%= image_tag item.images.first, class:'item-img' %>
-        <% end %>
+          <% if item.images.attached? %>
+            <%= image_tag item.images.first, class:'item-img' %>
+          <% end %>
 
           <% if item.purchase.present? %>
           <div class='sold-out'>
