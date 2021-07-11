@@ -8,7 +8,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("../price")
 require("../card")
-require('../preview')
+require('../new_item_preview')
 require('jquery')
 require("../show")
 
