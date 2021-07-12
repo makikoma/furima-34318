@@ -87,28 +87,31 @@
 }
 
 .upload_items {
-  background-color: lightgray;
   height: 100%;
   display: flex;
 }
 
 .image-element {
+  background-color: rgb(243, 238, 238);
   width: 100%;
   height: 100%;
+  margin: 0px 4px;
 }
 
 .image-element img {
   width: 100%;
   height: 85%;
+  object-fit: contain;
 }
 
 .image-element div {
   height: 15%;
   text-align: center;
+  cursor: pointer;
 }
 
 .click-upload {
-  background-color: rgb(221, 203, 179);
+  background-color: rgb(232, 230, 230);
   height: 100%;
   display: flex;
   justify-content: center;
