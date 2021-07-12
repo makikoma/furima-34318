@@ -26,7 +26,7 @@ app/assets/stylesheets/items/new.css %>
       </div>
     </div>
     <div id="input_image_file">
-      <%= f.file_field :images, multiple: true, name: 'item[images][]', id:"item_image_1", style: "display:none;" %>
+      <%= f.file_field :images, accept:".png, .jpeg, .jpg", multiple: true, name: 'item[images][]', id:"item_image_1", style: "display:none;" %>
     </div>
     <% if @item.images.present? %>
       <p>現在登録されている画像（削除するものはチェックしてください）</p>

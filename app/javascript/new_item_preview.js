@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function(){
       imageDelete.setAttribute('id', `item_image_delete${imageElementNum + 1}`)
       // ファイル選択ボタンを生成
       const inputHTML = document.createElement('input')
+      inputHTML.setAttribute('accept', ".png, .jpeg, .jpg")
       inputHTML.setAttribute('id', `item_image_${imageElementNum + 2}`)
       inputHTML.setAttribute('name', 'item[images][]')
       inputHTML.setAttribute('type', 'file')
