@@ -6,10 +6,10 @@ class PurchaseAddress
 
   with_options presence: true do
     validates :token
-    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'Input correctly' }
-    validates :state_id, numericality: { other_than: 1, message: 'Select' }
+    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'を正しく入力してください' }
+    validates :state_id, numericality: { other_than: 1, message: 'を選んでください' }
     validates :city, :address
-    validates :phone, format: { with: /\A[0-9]{1,11}\z/, message: 'Input only number' }
+    validates :phone, format: { with: /\A[0-9]{1,11}\z/, message: 'は半角数字のみ入力してください' }
     validates :user_id, :item_id
   end
 

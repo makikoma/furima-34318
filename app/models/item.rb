@@ -12,12 +12,12 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :images, :name, :explanation
-    validates :price, format: { with: /\A[0-9]\d+\z/, message: 'Half-width number' }
+    validates :price, format: { with: /\A[0-9]\d+\z/, message: 'は半角数字で入力してください' }
   end
 
-  validates_inclusion_of :price, in: 300..9_999_999, message: 'Out of setting range'
+  validates_inclusion_of :price, in: 300..9_999_999, message: 'は範囲内で入力してください'
 
-  with_options numericality: { other_than: 1, message: 'Select' } do
+  with_options numericality: { other_than: 1, message: 'を選んでください' } do
     validates :category_id, :condition_id, :postage_id, :area_id, :delivery_day_id
   end
 end
