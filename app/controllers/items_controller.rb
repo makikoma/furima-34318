@@ -53,6 +53,9 @@ class ItemsController < ApplicationController
     @results = @p.result
   end
 
+  def category
+  end
+
   private
 
   def item_params
