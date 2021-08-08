@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
+  before_action :search_item, only: [:index, :search]
 
   def index
     @items = Item.with_attached_images.includes(:purchase).order('id DESC')
@@ -48,6 +49,13 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @results = @p.result
+  end
+
+  def category
+  end
+
   private
 
   def item_params
@@ -63,4 +71,9 @@ class ItemsController < ApplicationController
   def move_to_index
     redirect_to root_path unless @item.user_id == current_user.id && @item.purchase.nil?
   end
+
+  def search_item
+    @p = Item.ransack(params[:q])  # 検索オブジェクトを生成
+  end
+
 end
