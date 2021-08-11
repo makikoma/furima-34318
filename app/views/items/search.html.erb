@@ -1,4 +1,61 @@
 <%= render "devise/shared/header" %>
-検索結果
+  <div class='item-contents'>
+    <h2 class='title'><%= @category.name %>の商品一覧</h2>
+    <ul class='item-lists'>
+
+      <% @items.each do |item|%>
+      <li class='list'>
+        <%= link_to item_path(item.id) do %>
+        <div class='item-img-content-0'>
+
+          <% if item.images.attached? %>
+            <%= image_tag item.images.first, class:'item-img' %>
+          <% end %>
+
+          <% if item.purchase.present? %>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+          <% end %>
+
+        </div>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= item.name %>
+          </h3>
+          <div class='item-price'>
+            <span><%= item.price %>円<br><%= item.postage.name %></span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <% end %>
+
+      <% if @items.empty? %>
+      <li class='list'>
+        <%= link_to '#' do %>
+        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            商品を出品してね！
+          </h3>
+          <div class='item-price'>
+            <span>99999999円<br>(税込み)</span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <% end %>
+
+    </ul>
+  </div>
 
 <%= render "devise/shared/footer" %>
