@@ -6,8 +6,11 @@ Rails.application.routes.draw do
     resources :purchases, only: [ :index, :create ]
     
     collection do
-      get 'search'
       get 'category'
+    end
+
+    member do
+      get 'search'
     end
 
   end
